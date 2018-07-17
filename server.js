@@ -25,11 +25,11 @@ app.get('/webhook', function(req, res) {
   if (req.query['hub.verify_token'] === 'token_facebook_duy_dang') {
     res.send(req.query['hub.challenge']);
   }
+  console.log(req);
   res.send('Error, wrong validation token');
 });
 
 app.set('port', process.env.OPENSHIFT_NODEJS_PORT || process.env.PORT || 3002);
-// app.set('ip', process.env);
 
 server.listen(app.get('port'), app.get('ip'), function() {
   console.log("Chat bot server listening at %s:%d ", app.get('ip'), app.get('port'));
